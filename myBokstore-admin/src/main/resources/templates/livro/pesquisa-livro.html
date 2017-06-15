@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace="fragmentos/fragmentos-layout :: cabecalho"></head>
+
+<body>
+	<header data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao"></header>
+
+	<!-- conteúdo principal -->
+	<main class="container">
+	<section class="row">
+		<div class="panel panel-default" style="border:none;">
+		
+		  <div data-th-replace="fragmentos/fragmentos-mensagens :: mensagem-sucesso"></div>
+		  
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title" style="float: left">Pesquisa de Livros</h1>
+					<a data-th-href="@{/livro/form}" class="btn btn-link"
+						style="float: right">Novo Livro</a>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped table-hover datatables-js" >
+						<thead>
+							<tr>
+								<th class="text-center col-md-1"> 
+								  <div class="checkbox">
+								    <input type="checkbox" th:id="selecionar-todos" /> 
+								  </div>  
+								</th>
+								<th>Título</th>
+								<th class="text-center col-md-2">Autor</th>
+								<th class="text-right col-md-1">Editora</th>
+								<th class="text-center col-md-1">Estoque</th>
+								<th class="text-center col-md-1">Preço Tabela</th>
+								<th class="text-center col-md-1">Preço Sugerido</th>
+								<th class="text-center col-md-1">Publicação</th>
+
+								<th class="col-md-1">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr data-th-each="livro : ${livros}"> -->
+							<tr data-th-each="livro : ${livros}">
+							
+								<td class="text-center col-sm-1">
+									<input type="hidden" name="id" th:value="${livro.id}" />
+									<input type="checkbox" th:id="'selected'+${livro.id}"  />
+								</td>
+								<td class="text-left">
+								   <a data-th-href="@{/livro/{id}/detalhes(id=${livro.id})}">
+								      <span data-th-text="${livro.titulo}"></span>
+								   </a>
+								</td>
+								
+								<td class="text-left col-md-2"   data-th-text="${livro.autor}"></td>
+								<td class="text-left col-md-1"   data-th-text="${livro.editora}"></td>
+								<td class="text-left col-md-1"   data-th-text="${livro.quantidaEmEstoque}"></td>
+								<td class="text-right col-sm-1"	 data-th-text="${{livro.precoTabelado}}"></td>
+								<td class="text-right col-sm-1"  data-th-text="${{livro.precoAtual}}"></td>
+								<td class="text-center col-sm-1" data-th-text="${{livro.dataPublicacao}}"></td>
+								<td class="col-sm-1 text-center">
+									<!-- Edição --> 
+									<a data-th-href="@{/livro/{id}(id=${livro.id})}" class="btn btn-default btn-xs" 
+									   title="Editar" data-toggle="tooltip" data-placement="top"> 
+									   <span class="glyphicon glyphicon-pencil"></span>
+								  </a>
+								  <button th:id="livro-+${livro.id}" 
+								      class="btn btn-default btn-xs excluir-livro" value="excluir">
+								      <span class="glyphicon glyphicon-trash"></span> 
+								  </button>
+
+								</td>
+							</tr>
+							<tr data-th-if="${!#lists.isEmpty($livros)}">
+								<td colspan="9">Nenhum Livro foi encontrado</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="9">
+									<button th:id="excluir-livros" class="btn btn-danger btn-sm">Excluir os livros Selecionados</button>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+	</section> <!-- row --> 
+	</main>
+
+	<div data-th-replace="fragmentos/fragmentos-scripts :: bootstrap"></div>
+	<div data-th-replace="fragmentos/fragmentos-scripts :: datatables"></div>
+	<div data-th-replace="fragmentos/fragmentos-scripts :: mybookstore-js"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
