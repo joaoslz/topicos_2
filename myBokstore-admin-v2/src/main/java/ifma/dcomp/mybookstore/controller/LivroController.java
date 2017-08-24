@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,8 @@ import ifma.dcomp.mybookstore.service.LivroService;
 @Controller
 @RequestMapping("/livro")
 public class LivroController {
+	
+    private static final Log LOG = LogFactory.getLog(RelatorioController.class );
 	
 	@Autowired
 	private LivroService livroService;
@@ -85,6 +89,9 @@ public class LivroController {
     		
     	}
     	livroService.salva(livro);
+    	LOG.info("Método salva() -- Livro " + livro.getTitulo() );
+    	
+    	
     	
     	redirect.addFlashAttribute("mensagem_sucesso", "O livro foi Salvo com Sucesso" );
     	String rota = livro.ehNovo() ? "redirect:/livro/form" : "redirect:/livro/pesquisa";

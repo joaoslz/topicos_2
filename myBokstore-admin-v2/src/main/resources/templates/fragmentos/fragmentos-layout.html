@@ -45,9 +45,9 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-left">
 						<li class="active"><a data-th-href="@{/}">Home</a></li>
+						
 						<li class="dropdown">
-						   <a href="#" class="dropdown-toggle"
-							    data-toggle="dropdown" role="button" aria-haspopup="true"
+						   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 							    aria-expanded="false">Livros <span class="caret"></span></a>
 						
 							<ul class="dropdown-menu">
@@ -57,18 +57,33 @@
 								<li><a href="#">Mais Vendidos</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Separated link</a></li>
-							</ul></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+						   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+						      aria-haspopup="true" aria-expanded="false">Relatórios 
+						        <span class="caret"></span>
+						   </a>
+						
+							<ul class="dropdown-menu">
+								<li><a data-th-href="@{relatorios/livros/pdf}">Relação de Livros</a></li>
+								<li><a href="#">Livro por Categoria</a></li>
+								<li><a href="#">Relação de Livros para Compra</a></li>
+								<li><a href="#">Livros Inativos</a></li>
+							</ul>
+						</li>
+						
+						
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Carrinho</a></li>
 						<li><a href="#">Seja bem vindo: 
-						                <span sec:authentication="name">Visitante</span>
-						</a></li>
-						<!-- th:text="${#authentication.name}" -->
+						      <span sec:authentication="name">Visitante</span></a>
+						</li>
 						<li>
-						  <form th:action="@{/logout}" method="POST">
-						     <button type="submit" class="btn btn-link">Sair</button>
+						  <form th:action="@{/logout}" method="POST" style="padding-top:10px">
+						     <button type="submit" class="btn btn-link"> 
+						     <span class="glyphicon glyphicon-new-window" title="Sair"></span></button>
 						  </form>  
 						</li>
 					</ul>

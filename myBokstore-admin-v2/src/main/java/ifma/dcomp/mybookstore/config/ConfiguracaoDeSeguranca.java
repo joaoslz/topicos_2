@@ -16,6 +16,7 @@ import ifma.dcomp.mybookstore.service.SegurancaUsuarioService;
 
 @Configuration
 @EnableWebSecurity
+
 // segurança nos métodos dos controllers
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
@@ -47,25 +48,25 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 		          .loginPage("/login").permitAll()
 		    .and()
 		          .logout()
-		            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		            
-		  ;   
+		            .logoutRequestMatcher(new AntPathRequestMatcher("/logout") );   
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(usuarioService)
+		.passwordEncoder(new BCryptPasswordEncoder() );
 	}
 	
-	  @Autowired
+	
+	
+/*	  @Autowired
 	    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	        auth
 	                .inMemoryAuthentication()
 	                .withUser("admin").password("admin").roles("ADMIN", "USER")
 	                .and().withUser("user").password("user").roles("USER");
-	    }
+	    }*/
 	
-	// forma de autenticação
-/*	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(usuarioService)
-		    .passwordEncoder(new BCryptPasswordEncoder() );
-	}
-*/
+
 }
 

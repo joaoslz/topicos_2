@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import ifma.dcomp.mybookstore.component.ConexaoComponente;
 import ifma.dcomp.mybookstore.model.Categoria;
 import ifma.dcomp.mybookstore.model.Editora;
 import ifma.dcomp.mybookstore.model.Livro;
@@ -22,6 +23,9 @@ public class HomeController {
 
 	@Autowired
 	private EditoraService editoraService;
+	
+	@Autowired
+	private ConexaoComponente exemploComponente;
 	
 	@GetMapping("/")
 	public String home() {
