@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace="fragmentos/fragmentos-layout :: cabecalho"></head>
+
+<body>
+	<header
+		data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao"></header>
+
+	<!-- conteúdo principal -->
+	<main class="container">
+
+	<section class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Buscar por:</div>
+				<div class="panel-body">
+					<form class="form-group" data-th-action="@{/livro/filtrar}" method="post">
+						<p>
+							<input type="text" name="titulo" class="form-control" placeholder="Título do Livro" />
+						</p>
+						<p>
+						<ul>
+						  <li>Selecione as categorias</li> 
+							
+													<!-- 
+													 li th:each="categoria : ${todasCategorias}">
+													  <input type="checkbox" th:field="${categorias}" 
+													                         th:value="${categoria.id}" /> 
+													  <label th:for="${#ids.prev('categorias')}"
+														       th:text="${categoria.nome}">Nome Categoria
+														</label>
+													</li> 
+													-->
+						</ul>
+						</p>
+						<p>
+						  <select name="editoraId" class="form-control">
+								<option value="" disabled="disabled">Selecione uma editora</option>
+								<option data-th-each="editora : ${editoras}"
+								      	data-th-value="${editora.id}" 
+								      	data-th-text="${editora.nome}">
+								</option>
+							</select>
+						</p>
+						<p>
+							<button type="submit" class="btn btn-primary btn-block">Buscar</button>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">Produto</div>
+				<div class="panel-body">
+					<div class="row">
+						<!-- <c:forEach items="${produtos}" var="produto"> -->
+							<div class="col-lg-4 col-sm-6">
+								<h4>Nome do Produto</h4>
+								<p>
+									<a href="#" class="block clearfix"> 
+									   <img src="#" width="150" height="200"> </a>
+								<p>
+									<a class="btn btn-default" href="#"> Saiba mais</a> 
+									<a class="btn btn-default" href="#">Editar </a>
+								</p>
+							</div>
+								<div class="col-lg-4 col-sm-6">
+								<h4>Nome do Produto</h4>
+								<p>
+									<a href="#" class="block clearfix"> 
+									   <img src="#" width="150" height="200"> </a>
+								<p>
+									<a class="btn btn-default" href="#"> Saiba mais</a> 
+									<a class="btn btn-default" href="#">Editar </a>
+								</p>
+							</div>
+								<div class="col-lg-4 col-sm-6">
+								<h4>Nome do Produto</h4>
+								<p>
+									<a href="#" class="block clearfix"> 
+									   <img src="#" width="150" height="200"> </a>
+								<p>
+									<a class="btn btn-default" href="#"> Saiba mais</a> 
+									<a class="btn btn-default" href="#">Editar </a>
+								</p>
+							</div>
+								<div class="col-lg-4 col-sm-6">
+								<h4>Nome do Produto</h4>
+								<p>
+									<a href="#" class="block clearfix"> 
+									   <img src="#" width="150" height="200"> </a>
+								<p>
+									<a class="btn btn-default" href="#"> Saiba mais</a> 
+									<a class="btn btn-default" href="#">Editar </a>
+								</p>
+							</div>
+        <!-- </c:forEach> -->					
+         </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<!-- principais seções do site --> <!-- Mais Vendidos -->
+	<section class="row">
+		<div class="linha-horizontal">
+			<span>Top 5 - Mais vendidos</span>
+			<hr />
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/mastering-spring-mvc.jpg" alt="" />
+			</a>
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/sistemas-operacionais-modernos.jpg" alt="" />
+			</a>
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/spring-boot-in-action.jpg" alt="" />
+			</a>
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/restful-webservice-spring.jpg" alt="" />
+			</a>
+		</div>
+	</section>
+
+	<!-- Últimos Lançamentos -->
+	<section class="row">
+		<div class="linha-horizontal">
+			<span>Últimos Lançamentos</span>
+			<hr />
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/mastering-spring-mvc.jpg" alt="" />
+			</a>
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/sistemas-operacionais-modernos.jpg" alt="" />
+			</a>
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/spring-boot-in-action.jpg" alt="" />
+			</a>
+		</div>
+		<div class="col-sm-3">
+			<a href="#" class="thumbnail"> <img
+				src="/imagens/livros/restful-webservice-spring.jpg" alt="" />
+			</a>
+		</div>
+	</section>
+
+	</main>
+
+	<span data-th-replace="fragmentos/fragmentos-scripts :: bootstrap"></span>
+
+</body>
+</html>

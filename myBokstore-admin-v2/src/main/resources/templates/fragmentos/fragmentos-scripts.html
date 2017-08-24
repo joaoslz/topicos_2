@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<th:block data-th-fragment="mybookstore-js"> 
+  <script data-th-src="@{/javascript/mybookstore.js}"></script>
+</th:block>
+
+
+<th:block data-th-fragment="bootstrap"> 
+
+  <script data-th-src="@{/webjars/jquery/2.2.4/dist/jquery.min.js}"></script> 
+  <script data-th-src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+
+</th:block>
+
+<th:block data-th-fragment="script-tinymce"> 
+  <!-- plugin para o input textarea -->
+	<script data-th-src="@{/javascript/vendors/tinymce/tinymce.min.js}"></script>
+
+	<script>
+		tinymce.init({
+			selector : 'textarea',
+			language : 'pt_BR'
+		});
+	</script>
+</th:block>
+
+<th:block data-th-fragment="datepicker"> 
+
+  <script data-th-src="@{/webjars/bootstrap-datepicker/1.6.4/dist/js/bootstrap-datepicker.min.js}"></script>
+	<script data-th-src="@{/webjars/bootstrap-datepicker/1.6.4/dist/locales/bootstrap-datepicker.pt-BR.min.js}"></script>
+	
+	<script>
+		/* componente datepicker para exibição de um calendário no campo de data */
+		$(function() {
+			$('.container-datepicker-js input').datepicker({
+				format : "dd/mm/yyyy",
+				language : "pt-BR",
+				autoclose : true
+			});
+		});
+	</script>
+
+</th:block>
+
+<th:block data-th-fragment="maskmoney"> 
+  <script data-th-src="@{/webjars/jquery-maskmoney/3.0.2/dist/jquery.maskMoney.min.js}"></script>
+	<script>
+		/* Biblioteca Maskmoney */
+		$(function() {
+			$('.maskmoney-js').maskMoney({
+				allowNegative : false,
+				thousands : '.',
+				decimal : ',',
+				affixesStay : false
+			});
+		});
+	</script>
+</th:block>
+
+<th:block data-th-fragment="datatables">
+
+  <script th:src="@{/webjars/datatables/1.10.13/media/js/jquery.dataTables.min.js}"></script>
+  <script th:src="@{/webjars/datatables/1.10.13/media/js/dataTables.bootstrap.min.js}"></script>
+<!-- <script th:src="@{/javascript/vendors/datatables/dataTables.bootstrap.min.js}"></script> -->
+  <script>
+      $(document).ready(function() {
+  			 $('.datatables-js').DataTable({
+	  				lengthMenu: [ [5, 10, 20, -1], [5, 10, 20, "Todos"] ],
+	  				ordering: false,
+	  				order: [],
+	  				stateSave: true,
+	  				
+	  				language: {
+	  					  "decimal": ",",
+		  	        "thousands": ".",
+		  	        
+	  					  "sEmptyTable": "Nenhum registro encontrado",
+	  				    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+	  				    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+	  				    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+	  				    "sInfoPostFix": "",
+	  				    "sInfoThousands": ".",
+	  				    "sLengthMenu": "_MENU_ resultados por página",
+	  				    "sLoadingRecords": "Carregando...",
+	  				    "sProcessing": "Processando...",
+	  				    "sZeroRecords": "Nenhum registro encontrado",
+	  				    "sSearch": "Filtrar",
+	  				    "oPaginate": {
+	  				        "sNext": "Próximo",
+	  				        "sPrevious": "Anterior",
+	  				        "sFirst": "Primeiro",
+	  				        "sLast": "Último"
+	  				    },
+	  				    "oAria": {
+	  				        "sSortAscending": ": Ordenar colunas de forma ascendente",
+	  				        "sSortDescending": ": Ordenar colunas de forma descendente"
+	  				    }
+	  	      }
+  			 });  	  
+      });
+  </script>
+
+</th:block>
+
+
+<th:block data-th-fragment="bootbox"> 
+   <script data-th-src="@{/javascript/vendors/bootbox/bootbox.min.js}"></script> 
+</th:block>
+
+</html>

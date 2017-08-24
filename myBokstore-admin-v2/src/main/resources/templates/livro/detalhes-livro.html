@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace="fragmentos/fragmentos-layout :: cabecalho"></head>
+
+<body>
+	<header data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao"></header>
+
+	<!-- conteúdo principal -->
+	<main class="container">
+	
+	  <div class="row">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img data-th-src="|/${livro.detalhesImagem.fotoPath}|" alt="Foto do Livro" 
+               class="img-responsive img-thumbnail" />
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <h2 data-th-text="|Livro: ${livro.titulo}|"></h2>
+          <h3 data-th-text="|Preço: ${{livro.precoTabelado}}|"></h3>
+          <h4 data-th-utext="|Preço: ${{livro.descricao}}|"></h4>
+          <form>
+              <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">Quantidade</span> 
+                <input type="number" class="form-control" name="quantidade" min="1" value="1" />
+              </div>
+            </div>
+            <div class="form-group">
+              <button href="#" class="btn btn-primary">Comprar</button>
+            </div>
+          </form>
+          
+        </div>
+    
+      </div>
+    </div>
+
+	</main>
+
+	<span data-th-replace="fragmentos/fragmentos-scripts :: bootstrap"></span>
+</body>
+</html>

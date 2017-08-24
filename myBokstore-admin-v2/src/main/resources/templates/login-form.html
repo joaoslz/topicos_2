@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+
+    <title>myBookstore - Formulário de Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link  th:href="@{/css/login.css}" rel="stylesheet" />
+    <link  th:href="@{/css/style.css}" rel="stylesheet" />
+
+  </head>
+
+<body>
+
+<div class="container" style="width:350px">
+
+      <form th:action="@{/login}" method="POST">
+        <h2 class="form-signin-heading">Acessar myBookstore</h2>
+        
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
+        
+        <!-- <label for="inputEmail" class="sr-only">Usuário</label> -->
+        <input type="text" id="inputUsername" name="username" 
+               class="form-control" placeholder="login"/>
+        
+        <!-- <label for="inputPassword" class="sr-only">Senha</label> -->
+        <input type="password" id="inputPassword" name="password" 
+               class="form-control" placeholder="Senha" style="margin-top:0.6rem" />
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:1rem">
+        	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Logar
+        </button>
+        
+        <div th:if="${#bools.isTrue(param.error)}" class="alert alert-danger" 
+             role="alert" style="margin-top:1.5rem">Usuário ou Senha Inválida</div>
+    
+        <div th:if="${#bools.isTrue(param.logout)}" class="alert alert-info" 
+             role="alert" style="margin-top:1.5rem">Logout realizado com sucesso</div>
+      
+      </form>
+	  <div class="login-help">
+	     <a href="#">Esqueceu a sua senha?</a>
+	  </div>
+
+    </div> <!-- /container -->
+
+</body>
+
+</html>

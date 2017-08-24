@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- <head data-th-fragment="cabecalho(title, links)"> -->
+<!-- <head th:replace="fragmentos/fragmentos_layout :: cabecalho(~{::title},~{::link})"> -->
+
+<head th:replace="fragmentos/fragmentos-layout :: cabecalho">
+</head>
+
+<body>
+
+  <span data-th-replace="fragmentos/fragmentos-scripts :: script-tinymce" ></span>
+	<header data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao"></header>
+
+	<!-- conteúdo principal -->
+	<main class="container">
+
+	<section class="row">
+	
+		<div data-th-replace="fragmentos/fragmentos-mensagens :: mensagem-sucesso" ></div>
+		
+		<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title pull-left" style="padding-top: 9px">Cadastro de Livro</h1>
+				<a data-th-href="@{/livro/pesquisa}" class="btn btn-link pull-right">Pesquisar Livro</a>
+			</div>
+		</div>
+
+		<div class="panel-body">
+		   
+		  <!-- formulário de cadastro de livro --> 
+		  <form class="form-horizontal" data-th-action="@{/livro/salva}" method="post" 
+		        data-th-object="${livro}" enctype="multipart/form-data" >
+ 
+			<div data-th-replace="fragmentos/fragmentos-mensagens :: mensagem-erro-form"></div>
+					
+		<!-- 	<fieldset>
+				<legend class="center-block">Cadastro de Livros</legend> -->
+
+				<!-- Campo Id é necessário para diferenciar quando é um novo livro 
+				     ou a edição de um já existente -->
+				
+				<input type="hidden" name="id" data-th-value="${livro.id}" />
+
+				<!-- Título -->
+				<div class="form-group" data-th-classappend="${#fields.hasErrors('titulo')} ? 'has-error has-feedback' ">
+					<div class="col-md-offset-1 col-md-9">
+  					<label for="titulo">* Título</label>
+						<input type="text" name="titulo" class="form-control" id="titulo"
+							     data-th-value="${livro.titulo}"
+							     placeholder="Título do Livro" /> 
+					  </div>
+				</div>
+				
+				<!-- Autor -->
+				<div class="form-group">
+					<div class="col-md-offset-1 col-md-9">
+  				  <label for="autor">Autor(es)</label>
+						<input type="text" name="autor" class="form-control" id="autor"
+							     data-th-value="${livro.autor}" placeholder="autor(es) do livro" />
+					</div>
+        </div>
+      <!-- ########################################## -->
+
+				<div class="form-group">
+					<div class="col-md-offset-1 col-md-9">
+						 <label>Categorias</label>
+						<ul>
+						 	<li th:each="categoria : ${todasCategorias}" class="li-inlineblock">
+							  <input type="checkbox" th:field="${livro.categorias}" th:value="${categoria.id}" /> 
+							  <label th:for="${#ids.prev('categorias')}"
+								       th:text="${categoria.nome}">Nome Categoria
+								</label>
+							</li>
+						</ul>
+           </div>
+         </div>
+
+			<!--  <ul>
+							<li th:each="feat : ${allFeatures}">
+							  <input type="checkbox" th:field="*{features}" th:value="${feat}" /> 
+							  <label th:for="${#ids.prev('features')}" th:text="#{${'seedstarter.feature.' + feat}}">
+							    Heating
+							  </label>
+							 </li>
+						</ul> -->
+
+
+						<!-- ########################################## -->
+						<div class="form-group">
+
+							<!-- Data de Publicação -->
+							<div class="col-md-offset-1 col-md-3 container-datepicker-js">
+							  <label for="dataPublicacao">Data de	Publicação</label>
+								<input type="text" class="form-control" id="dataPublicacao"
+									           data-th-value="${{livro.dataPublicacao}}" name="dataPublicacao"
+									placeholder="Data em que o livro foi publicado" />
+							</div>
+
+							<!-- Editora -->
+							<div class="col-md-3">
+ 							  <label for="editora">Editora</label>
+ 							  
+								<select th:field="${livro.editora}" class="form-control">
+									 <option value="" disabled="disabled">Selecione uma editora</option>
+									 <option data-th-each="editora : ${editoras}"
+										       data-th-value="${editora.id}" data-th-text="${editora.nome}">
+									</option>
+								</select>
+								
+							</div>
+
+							<!-- Idioma -->
+							<div class="col-md-3">
+							  <label for="idioma">Idioma</label>
+								<select data-th-value="${livro.idioma}" id="idioma"
+									name="idioma" class="form-control">
+									<option value="english">Português</option>
+									<option value="spanish">Inglês</option>
+									<option value="spanish">Espanhol</option>
+								</select>
+							</div>
+						</div>
+
+				<!-- ########################################## -->	
+
+				    <!-- Quantidade de Páginas -->
+						<div class="form-group">
+							<div class="col-md-offset-1 col-md-3">
+							<label for="paginas">Paginas</label>
+								<input type="number" name="paginas" class="form-control"
+									id="paginas" data-th-value="${livro.paginas}"
+									placeholder="Quantidade de páginas do livro" />
+							</div>
+
+							<!-- ISBN -->
+							<div class="col-md-3">
+								<label for="isbn">ISBN</label> 
+								<input type="text" name="isbn"
+								       class="form-control" id="isbn" data-th-value="${livro.isbn}"
+									     placeholder="ISBN do livro" />
+							</div>
+
+							<!-- Peso do livro -->
+							<div class="col-md-3">
+								<label for="peso">Peso</label>
+								<div class="input-group">
+									<input data-th-value="${livro.peso}" type="number" name="peso"
+										class="form-control" id="peso"
+										placeholder="Peso do livro em gramas" /> <span
+										class="input-group-addon">gramas</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- ########################################## -->	
+      	
+					<!-- Preço de tabela -->
+						<div class="form-group">
+							<div class="col-md-offset-1 col-md-3">
+								<label for="precoTabelado">Preço de tabela</label>
+								<div class="input-group">
+									<span class="input-group-addon">R$</span> <input
+										data-th-value="${livro.precoTabelado}" type="text"
+										name="precoTabelado" class="form-control maskmoney-js"
+										id="precoTabelado" placeholder="Preco padrão (tabelado)" />
+								</div>
+							</div>
+
+							<!-- Preço Atual -->
+							<div class="col-md-3">
+								<label for="precoAtual">Preço Atual</label>
+								<div class="input-group">
+									<span class="input-group-addon">R$</span> <input
+										data-th-value="${livro.precoAtual}" type="text"
+										name="precoAtual" class="form-control maskmoney-js"
+										id="precoAtual" placeholder="Preço atual do livro" />
+								</div>
+							</div>
+
+							<!-- Quantidade de livro em estoque -->
+							<div class="col-md-3">
+								<label for="quantidaEmEstoque">Quantidade em Estoque</label>
+								<div>
+									<input data-th-value="${livro.quantidaEmEstoque}" type="number"
+										name="quantidaEmEstoque" class="form-control"
+										id="quantidaEmEstoque"
+										placeholder="Números de exemplares em estoque" />
+								</div>
+							</div>
+						</div>
+						<!-- ########################################## -->	
+        
+				<!-- status do livro -->
+				<div class="form-group">
+					<div class="col-md-offset-1 col-md-9">
+					  <label for="status">Status</label>
+						<label> 
+						   <input value="true" type="radio" name="ativo" checked="checked" /> Ativo
+						</label> 
+						<label> 
+						   <input value="false" type="radio" name="ativo" /> Inativo
+						</label> 
+						<span class="help-block"> Define se o livro está disponível para ser comercializado. </span>
+					</div>
+				</div>
+
+				<!-- descrição -->
+				<div class="form-group">
+					<div class="col-md-offset-1 col-md-9">
+					  <label for="descricao">Descrição</label>
+						<textarea name="descricao" rows="5" class="form-control"
+							id="descricao" data-th-utext="${livro.descricao}" 
+							data-th-value="${livro.descricao}"></textarea>
+					</div>
+				</div>
+
+				<!-- upload da imagem (foto) do livro -->
+				<div class="form-group">
+					<div class="col-md-offset-1 col-md-9">
+					  <label for="foto">Foto do Livro</label>
+						<input type="file" name="imagemDoLivro" id="foto" class="form-control" 
+							title="Selecione a Imagem (foto) da capa do livro" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-md-offset-1 col-md-7"></div>
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-success">Salvar</button>
+						<a class="btn btn-danger" data-th-href="@{/}">Cancela</a>
+					</div>
+				</div>
+			<!-- </fieldset> -->
+		</form>
+		</div>  <!-- panel-body -->
+   </div> <!-- panel -->
+	</section> <!-- row --> 
+	</main>
+
+	<span data-th-replace="fragmentos/fragmentos-scripts :: bootstrap"></span>
+	<span data-th-replace="fragmentos/fragmentos-scripts :: datepicker"></span>
+	<span data-th-replace="fragmentos/fragmentos-scripts :: maskmoney"></span>
+	<span data-th-replace="fragmentos/fragmentos-scripts :: mybookstore-js"></span>
+	
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace="fragmentos/fragmentos-layout :: cabecalho">
+</head>
+
+<body>
+	<header data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao"></header>
+
+	<main class="container"> 
+	 <header class="row borda-inferior">
+		<div class="col-sm-8">
+			<h2 class="titulo-secao">Conta do Usuário</h2>
+		</div>
+		<div class="col-sm-4">
+			<img src="/imagens/myBookStore.png" class="img-responsive" alt="Logo" />
+		</div>
+	 </header> <!-- class="row borda-inferior" --> <!-- Painel com Abas -->
+	
+	<section class="row" style="margin-top: 5rem;">
+		<div class="col-sm-9 col-sm-offset-3">
+		
+		 <!-- mensagem de sucesso -->
+				<div data-th-if="${!#strings.isEmpty(mensagem_sucesso)}" class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Operação realizada com sucesso.
+				</div>
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+
+				<li role="presentation" class="active"><a href="#tab-1"
+					aria-controls="tab-1" role="tab" data-toggle="tab">Criar uma
+						nova Conta</a></li>
+
+				<li role="presentation"><a href="#tab-2" aria-controls="tab-2"
+					role="tab" data-toggle="tab">Log in</a></li>
+
+				<li role="presentation"><a href="#tab-3" aria-controls="tab-3"
+					role="tab" data-toggle="tab">Esqueceu a senha?</a></li>
+			</ul>
+			
+			
+			<!-- Tab panes -->
+			<div class="tab-content">
+			 
+				<!-- Tab 1 - criar uma nova conta -->
+				<div role="tabpanel" class="tab-pane active" id="tab-1">
+					
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-body"
+								style="background-color: #ededed; margin-top: 1rem;">
+
+								<form action="/usuario/salvar" method="post">
+									
+									<div class="form-group">
+										<label for="usuario">* Login</label> 
+										<input id="usuario" name="nome" type="text" class="form-control"
+											   required="required" autofocus="autofocus" />
+										<p style="color: #828282">
+											<em>Informe o nome do usuário</em>
+										</p>
+									</div>
+
+									<div class="form-group">
+										<label for="email">* Email</label> 
+										<input id="email" name="email" required="required" type="text"
+											class="form-control" />
+										<p style="color: #828282">
+											<em>Informe um endereço de email válido. Todos os email
+												deste sistema será enviado para este endereço. Este email
+												será de uso privativo e somente será usado quando você
+												desejá receber uma nova senha ou algumas notificação.</em>
+										</p>
+									</div>
+									<button type="submit" class="btn btn-primary">Criar
+										uma nova conta</button>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Tab-2 - Login-->
+				<div role="tabpanel" class="tab-pane fade" id="tab-2">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-body"
+								style="background-color: #ededed; margin-top: 1rem;">
+								<form>
+									<div class="form-group">
+										<label for="usuario">* Login</label> 
+										<input id="usuario" name="usuarioXX" type="text" class="form-control"
+											required="required" autofocus="autofocus" />
+										<p style="color: #828282">
+											<em>Informe o nome do usuário</em>
+										</p>
+									</div>
+
+									<div class="form-group">
+										<label for="senha">* Senha</label> 
+										 <input id="senha" name="senhaXX" type="password" class="form-control"
+											required="required" />
+										<p style="color: #828282">
+											<em>Informe uma senha válida.</em>
+										</p>
+									</div>
+									<button type="submit" class="btn btn-primary">Acessar</button>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Tab 3 - Esqueceu a senha -->
+				<div role="tabpanel" class="tab-pane fade" id="tab-3">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<div class="panel-body"
+								style="background-color: #ededed; margin-top: 1rem;">
+								
+								<form>
+									<div class="form-group">
+										<label for="recuperar-senha">* Senha</label> 
+										<input id="recuperar-senha" name="email" type="text"
+											   class="form-control" required="required"
+											   autofocus="autofocus" />
+
+										<p style="color: #828282">
+											<em>Informe o seu endereço de email registrado no sistema.</em>
+										</p>
+									</div>
+									<button type="submit" class="btn btn-primary">Enviar</button>
+								</form>
+							</div> <!-- panel-body -->
+						</div>
+					</div> <!-- panel-group -->
+				</div> <!-- tab-pane -->
+			</div> <!-- tab-content -->
+		</div>
+	</section>
+	</main>
+
+	<div data-th-replace="fragmentos/fragmentos-scripts :: bootstrap"></div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<!-- <head th:fragment="cabecalho(title, links)"> -->
+
+<head data-th-fragment="cabecalho">	
+	<meta charset="utf-8" >
+	<meta name="viewport" content="width=device-width, initial-scale=1" >
+	<meta name="description" content="" >
+	<meta name="author" content="" >
+	
+	<title>myBookstore</title>
+	<!-- <title th:replace="${title}">myBookstore</title> -->
+	
+	<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css}" >
+	
+	<link rel="stylesheet" data-th-href="@{/css/home.css}" >
+	
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/1.6.4/dist/css/bootstrap-datepicker.standalone.min.css}" />
+	
+ 	<link rel="stylesheet" th:href="@{/webjars/datatables/1.10.13/media/css/jquery.dataTables.min.css}">    
+	<link rel="icon" data-th-href="@{/imagens/icone-bookstore.png}" >
+	
+</head>
+
+
+<header data-th-fragment="barra-navegacao">
+	  <!-- barra superior -->
+		<div class="topo-pagina" ></div>
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">myBookStore</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a data-th-href="@{/}">Home</a></li>
+						<li class="dropdown">
+						   <a href="#" class="dropdown-toggle"
+							    data-toggle="dropdown" role="button" aria-haspopup="true"
+							    aria-expanded="false">Livros <span class="caret"></span></a>
+						
+							<ul class="dropdown-menu">
+								<li><a data-th-href="@{/livro/form}">Cadastro</a></li>
+								<li><a data-th-href="@{/livro/pesquisa}">Pesquisa</a></li>
+								<li><a href="#">Lançamentos</a></li>
+								<li><a href="#">Mais Vendidos</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul></li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Carrinho</a></li>
+						<li><a href="#">Seja bem vindo: 
+						                <span sec:authentication="name">Visitante</span>
+						</a></li>
+						<!-- th:text="${#authentication.name}" -->
+						<li>
+						  <form th:action="@{/logout}" method="POST">
+						     <button type="submit" class="btn btn-link">Sair</button>
+						  </form>  
+						</li>
+					</ul>
+				</div> <!--/.nav-collapse -->
+			</div> <!--/.container-fluid -->
+		</nav>
+</header> <!-- fragment data-th-barra-navegacao -->
+	
+</html>
