@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace= "fragmentos/fragmentos-layout :: cabecalho" ></head>
+
+
+<body>
+  <header  data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao" ></header>
+
+<div class="jumbotron">
+  <div class="container text-center">
+  <img src="../static/imagens/erros/3.png" width="40%" th:src="@{/imagens/erros/3.png}">
+    <h2>Erro...</h2>
+    
+    <blockquote class="blockquote">
+       <small> Dica 1. O erro 500 indica uma falha interna no servidor que pode ser causado 
+               por um erro de programação em algum sistema do seu site ou ainda por permissões 
+               incorretas em arquivos e pastas. 
+       </small>
+    </blockquote>
+
+
+  </div>
+</div>
+  
+</body>
+</html>
+

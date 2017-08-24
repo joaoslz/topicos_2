@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head data-th-replace= "fragmentos/fragmentos-layout :: cabecalho" ></head>
+
+
+<body>
+  <header  data-th-replace="fragmentos/fragmentos-layout :: barra-navegacao" ></header>
+
+<div class="jumbotron">
+  <div class="container text-center">
+  <img src="../static/imagens/erros/2.png" width="40%" th:src="@{/imagens/erros/2.png}">
+    <h2>Erro...</h2>
+    
+    <blockquote class="blockquote">
+       <small> Dica 1. Verifique se você cometeu algum erro enquanto digitava a URL. 
+       Muitas vezes, o erro é provocado quando o usuário digita errado o endereço 
+       da página que ele deseja acessar; 
+       </small>
+    
+       <small>Dica 2. Verifique se o link que você clicou para acessar a página não 
+          está com a URL errada. 
+          A pessoa que criou o link pode ter errado durante a digitação;
+       </small>
+    </blockquote>
+
+
+  </div>
+</div>
+  
+</body>
+</html>
+

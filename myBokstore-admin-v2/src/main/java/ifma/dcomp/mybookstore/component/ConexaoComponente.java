@@ -16,8 +16,6 @@ public class ConexaoComponente {
 	
 	public Connection obterConexaoJDBC() {
 		
-		LOG.info("Olá de ExemploComponente");
-		
 		try {
 			return DriverManager.getConnection("jdbc:mysql://localhost/bookstore?useSSL=false", "root", "root" );
 		
