@@ -33,4 +33,6 @@ public class TempoRequisicaoIntecerptor extends HandlerInterceptorAdapter {
 		          +  ( System.currentTimeMillis() - tempoInicio) 
 		          + "ms");
 	}
+	
+	
 }

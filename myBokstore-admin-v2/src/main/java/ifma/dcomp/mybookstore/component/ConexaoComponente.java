@@ -25,7 +25,7 @@ public class ConexaoComponente {
 			LOG.error("Causa do erro: " + e.getCause() );
 			LOG.error("Mensagem de erro: " + e.getMessage() );
 			
-			throw new RuntimeException(e.getMessage() );
+			throw new RuntimeException(e );
 		}
 	}	
 

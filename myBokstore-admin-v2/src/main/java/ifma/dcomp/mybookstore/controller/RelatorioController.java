@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +32,7 @@ public class RelatorioController {
 	  private ConexaoComponente conexaoComponente;
 	
 	  @GetMapping("/livros/pdf")
-	  @ResponseBody
+	  //@ResponseBody
 	  public void geraRelatorio(HttpServletResponse response) throws JRException, IOException, SQLException {
 
 		InputStream jasperStream = this.getClass().getResourceAsStream("/relatorios/livros.jasper");

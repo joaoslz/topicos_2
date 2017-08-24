@@ -20,4 +20,5 @@ public class WebMvcConfiguracao extends WebMvcConfigurerAdapter {
 	}
 	
 	
+	
 }

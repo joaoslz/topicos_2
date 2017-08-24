@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ErroController {
 	
-	@ExceptionHandler(RuntimeException.class)
+	@ExceptionHandler(Exception.class)
 	public String exibeErroNoServidor() {
 		return "/error/500";
 	}
