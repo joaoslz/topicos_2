@@ -68,6 +68,7 @@ public class LivroController {
 	public List<Categoria> todasCategorias() {
 		return categoriaService.todas();
 	}
+	
     @PostMapping("/salva")
 	public String salva(@Validated Livro livro, 
 			            Errors validacao, 
