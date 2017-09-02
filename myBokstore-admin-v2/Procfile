@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar myBokstore-admin-v2/target/*.jar
+web: java -Dserver.port=$PORT -jar target/*.jar
