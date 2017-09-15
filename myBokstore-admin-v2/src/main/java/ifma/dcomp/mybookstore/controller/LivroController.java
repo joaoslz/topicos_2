@@ -54,8 +54,6 @@ public class LivroController {
 	public String form(Model model, Livro livro) {
 		model.addAttribute("livro", livro);
 		
-		//int x = 5 / 0;
-		
 		return "livro/cadastro-livro";
 	}
 	
@@ -174,4 +172,5 @@ public class LivroController {
 		
 		return modelAndView;	
 	}
+	
 }

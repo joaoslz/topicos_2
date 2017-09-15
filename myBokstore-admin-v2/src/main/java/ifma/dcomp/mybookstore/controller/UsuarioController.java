@@ -16,6 +16,7 @@ public class UsuarioController {
 	
 	@PostMapping("/usuario/salvar")
 	public ModelAndView salvar(Usuario usuario) {
+
 		// salvar no banco
 		usuarios.save(usuario);
 		

@@ -33,7 +33,8 @@ public class DetalhesImagemLivro implements Serializable {
     public DetalhesImagemLivro() {
     }
 
-    public DetalhesImagemLivro(String imagemPath, String nomeArquivo, Long tamanhoArquivo, String tipoArquivo) {
+    public DetalhesImagemLivro(String imagemPath, String nomeArquivo, Long tamanhoArquivo, 
+    		                   String tipoArquivo) {
         this.imagemPath = imagemPath;
         this.nomeArquivo = nomeArquivo;
         this.tamanhoArquivo = tamanhoArquivo;

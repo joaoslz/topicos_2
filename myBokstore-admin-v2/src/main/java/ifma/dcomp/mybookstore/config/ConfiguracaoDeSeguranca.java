@@ -24,7 +24,6 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private SegurancaUsuarioService usuarioService;
 	
-	// autorização
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	
@@ -53,8 +52,9 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(usuarioService)
-		.passwordEncoder(new BCryptPasswordEncoder() );
+		auth
+		  .userDetailsService(usuarioService)
+		  .passwordEncoder(new BCryptPasswordEncoder() );
 	}
 	
 	

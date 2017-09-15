@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>myBookstore</name>
-	<description>Sistema de Administração da livraria</description>
+	<description>Sistema de Administração de livraria</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -36,6 +36,16 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.data</groupId>
+        	<artifactId>spring-data-rest-hal-browser</artifactId>
+    	</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
@@ -55,10 +65,10 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-		<!-- <dependency> 
-		      <groupId>org.thymeleaf.extras</groupId> 
-		      <artifactId>thymeleaf-extras-springsecurity4</artifactId> 
-			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
 		<dependency>
@@ -91,6 +101,14 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+<!-- 		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.0</version>
+		</dependency> -->
+		
 
 
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
@@ -146,6 +164,10 @@
 			<version>1.10.13</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

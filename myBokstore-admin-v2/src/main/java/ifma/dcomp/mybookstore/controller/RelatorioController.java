@@ -48,7 +48,7 @@ public class RelatorioController {
 
 	    final OutputStream outStream = response.getOutputStream();
 	    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-
+	    
 	  }
 
 	private Connection obterConexaoJDBC() throws SQLException {
